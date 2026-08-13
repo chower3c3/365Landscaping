@@ -251,7 +251,7 @@
   }
   .ba-compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;}
   .ba-img-before{z-index:1;}
-  .ba-img-after{z-index:2;clip-path:inset(0 50% 0 0);}
+  .ba-img-after{z-index:2;clip-path:inset(0 0 0 50%);}
   .ba-tag{position:absolute;top:14px;z-index:4;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:rgba(10,43,31,0.55);padding:5px 12px;border-radius:100px;}
   .ba-tag-before{left:14px;}
   .ba-tag-after{right:14px;}
@@ -937,7 +937,7 @@
       let dragging = false;
       function setPct(pct){
         pct = Math.max(0, Math.min(100, pct));
-        after.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+        after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
         handle.style.left = pct + '%';
       }
       function pctFromEvent(e){
