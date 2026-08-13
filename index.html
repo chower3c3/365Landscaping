@@ -812,19 +812,33 @@
     </div>
 
     <div class="form-card reveal">
-      <form id="quoteForm">
-        <div class="form-head"><span>Request a quote</span></div>
-        <div class="field-row">
-          <div class="field"><label for="fname">First name</label><input id="fname" type="text" placeholder="Jake" required></div>
-          <div class="field"><label for="lname">Last name</label><input id="lname" type="text" placeholder="Mroz" required></div>
-        </div>
-        <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="you@email.com" required></div>
-        <div class="field"><label for="msg">What does your property need?</label><textarea id="msg" placeholder="Tell us about your property and what you'd like done..." required></textarea></div>
-        <button type="submit" class="btn btn-solid">Submit request
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </button>
-        <p class="form-note">We respond to every request — no bots, no auto-quotes.</p>
-      </form>
+<form id="quoteForm">
+  <div class="form-head"><span>Request a quote</span></div>
+  <div class="field-row">
+    <div class="field"><label for="fname">First name</label><input id="fname" name="fname" type="text" autocomplete="given-name" placeholder="Jake" required></div>
+    <div class="field"><label for="lname">Last name</label><input id="lname" name="lname" type="text" autocomplete="family-name" placeholder="Mroz" required></div>
+  </div>
+  <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required></div>
+  <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="412-555-0123" required></div>
+  <div class="field"><label for="msg">What does your property need?</label><textarea id="msg" name="msg" placeholder="Tell us about your property and what you'd like done..." required></textarea></div>
+
+  <!-- honeypot: hidden from humans, bots fill it -->
+  <div style="position:absolute;left:-9999px;" aria-hidden="true">
+    <label for="website">Website</label>
+    <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+  </div>
+
+  <input type="hidden" name="page_url" id="page_url">
+  <input type="hidden" name="utm_source" id="utm_source">
+  <input type="hidden" name="utm_medium" id="utm_medium">
+  <input type="hidden" name="utm_campaign" id="utm_campaign">
+
+  <button type="submit" class="btn btn-solid" id="quoteSubmit">Submit request
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+  </button>
+  <p class="form-error" id="formError" style="display:none;margin-top:12px;font-size:13.5px;color:#F0A9A9;"></p>
+  <p class="form-note">We respond to every request, no bots, no auto-quotes.</p>
+</form>
       <div class="form-success" id="formSuccess">
         <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
         <h4>Thanks — request received.</h4>
@@ -1009,11 +1023,50 @@
 
   // form
   const form = document.getElementById('quoteForm');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+// stamp UTMs and landing page on load
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const setIf = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
+  setIf('page_url', window.location.href);
+  setIf('utm_source', params.get('utm_source'));
+  setIf('utm_medium', params.get('utm_medium'));
+  setIf('utm_campaign', params.get('utm_campaign'));
+})();
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const btn = document.getElementById('quoteSubmit');
+  const errEl = document.getElementById('formError');
+  const originalLabel = btn.innerHTML;
+
+  errEl.style.display = 'none';
+  btn.disabled = true;
+  btn.style.opacity = '0.65';
+  btn.textContent = 'Sending...';
+
+  const payload = Object.fromEntries(new FormData(form).entries());
+
+  try {
+    const res = await fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) throw new Error('Request failed: ' + res.status);
+
     form.style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
-  });
+  } catch (err) {
+    console.error(err);
+    errEl.textContent = 'Something went wrong sending your request. Please call 412-567-4407 and we will take care of you.';
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.innerHTML = originalLabel;
+  }
+});
 </script>
 </body>
 </html>
