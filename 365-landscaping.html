@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>365 Landscaping | Pittsburgh, PA — Year-Round Outdoor Care</title>
+<meta name="description" content="Professional landscaping, lawn care, hardscaping, exterior services, junk hauling and snow removal in Pittsburgh, PA. 365 days. Every season. One team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="photos/365-logo.png">
+<style>
+  :root{
+    --pine:#0F3D2C;
+    --pine-deep:#0A2B1F;
+    --grass:#3F8F52;
+    --grass-light:#68B978;
+    --stone:#EDE7DA;
+    --stone-light:#F7F4EC;
+    --ink:#132018;
+    --ink-soft:#4B584F;
+    --amber:#C97A34;
+    --ice:#6FA0B8;
+    --spring:#79C27E;
+    --summer:#2E7D46;
+    --autumn:#C97A34;
+    --winter:#6FA0B8;
+    --line:rgba(15,61,44,0.14);
+    --radius:14px;
+    --disp:'Poppins', sans-serif;
+    --body:'Poppins', sans-serif;
+    --mono:'Poppins', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--stone-light);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--grass);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:7px;height:7px;border-radius:50%;
+    background:var(--grass);
+    box-shadow:0 0 0 3px rgba(63,143,82,0.18);
+  }
+  h1,h2,h3,h4{font-family:var(--disp);font-weight:700;letter-spacing:-0.01em;color:var(--pine-deep);}
+  ::selection{background:var(--grass);color:#fff;}
+  :focus-visible{outline:2px solid var(--grass);outline-offset:3px;}
+
+  /* ---------- topo background ---------- */
+  .topo{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+  .topo svg{width:100%;height:100%;}
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:20px 0;
+    transition:background .35s ease, padding .35s ease, box-shadow .35s ease, border-color .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    background:rgba(247,244,236,0.86);
+    backdrop-filter:blur(14px) saturate(1.4);
+    -webkit-backdrop-filter:blur(14px) saturate(1.4);
+    padding:13px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:19px;color:#fff;letter-spacing:-0.02em;transition:color .35s ease;}
+  header.scrolled .logo{color:var(--pine-deep);}
+  .logo-img{
+    width:44px;height:44px;object-fit:contain;flex-shrink:0;
+    filter:brightness(0) invert(1);
+    transition:filter .35s ease;
+  }
+  header.scrolled .logo-img{filter:none;}
+  .logo small{display:block;font-family:var(--mono);font-weight:400;font-size:9.5px;letter-spacing:0.16em;color:rgba(255,255,255,0.65);text-transform:uppercase;}
+  header.scrolled .logo small{color:var(--ink-soft);}
+  nav.primary{display:flex;align-items:center;gap:36px;}
+  .navlinks{display:flex;align-items:center;gap:30px;font-size:14px;font-weight:600;}
+  .navlinks a{color:rgba(255,255,255,0.88);position:relative;padding:4px 0;transition:color .3s ease;}
+  header.scrolled .navlinks a{color:var(--ink);}
+  .navlinks a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--grass-light);transition:width .25s ease;}
+  header.scrolled .navlinks a::after{background:var(--grass);}
+  .navlinks a:hover::after{width:100%;}
+  .has-drop{position:relative;}
+  .dropdown{
+    position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%) translateY(-6px);
+    background:#fff;border-radius:12px;box-shadow:0 20px 45px -14px rgba(15,61,44,0.28);
+    padding:10px;min-width:220px;
+    opacity:0;visibility:hidden;transition:opacity .22s ease, transform .22s ease;
+    border:1px solid var(--line);
+  }
+  .has-drop:hover .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+  .dropdown a{display:block;color:var(--ink)!important;padding:9px 12px;border-radius:8px;font-size:13.5px;font-weight:500;}
+  .dropdown a:hover{background:var(--stone-light);color:var(--grass)!important;}
+  .dropdown a::after{display:none;}
+  .call-chip{
+    display:flex;align-items:center;gap:9px;
+    font-family:var(--mono);font-size:13px;font-weight:500;
+    color:#fff;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.25);
+    padding:9px 16px;border-radius:100px;
+    transition:all .3s ease;
+    white-space:nowrap;
+  }
+  header.scrolled .call-chip{color:var(--pine-deep);background:var(--stone);border-color:var(--line);}
+  .call-chip:hover{background:var(--grass);border-color:var(--grass);color:#fff;}
+  .burger{display:none;width:38px;height:38px;border-radius:9px;border:1px solid rgba(255,255,255,0.3);background:transparent;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;}
+  header.scrolled .burger{border-color:var(--line);}
+  .burger span{width:16px;height:2px;background:#fff;transition:.3s;}
+  header.scrolled .burger span{background:var(--pine-deep);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background:var(--pine-deep);
+    overflow:hidden;
+    padding-top:100px;
+  }
+  .hero-photo{
+    position:absolute;inset:0;
+    background-image:url('https://static.wixstatic.com/media/b541c4_fa26ce479e1242aebcabccefcb8572ca~mv2.png/v1/fill/w_2200,h_1400,al_c,q_90,enc_avif,quality_auto/b541c4_fa26ce479e1242aebcabccefcb8572ca~mv2.png');
+    background-size:cover;background-position:center;
+  }
+  .hero-photo::after{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(120% 90% at 20% 0%, rgba(22,76,54,0.88) 0%, rgba(15,61,44,0.92) 42%, rgba(10,43,31,0.96) 100%);
+  }
+  .hero .topo{opacity:0.5;}
+  .hero::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(10,43,31,0) 55%, rgba(8,26,19,0.9) 100%);
+    pointer-events:none;
+  }
+  .hero-grid{position:relative;z-index:2;display:block;padding-bottom:70px;}
+  .hero-copy .eyebrow{color:var(--grass-light);margin-bottom:22px;}
+  .hero h1{
+    font-size:clamp(40px, 5.6vw, 76px);
+    line-height:0.98;
+    color:#fff;
+    max-width:15ch;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--grass-light);
+    display:block;
+  }
+  .hero p.sub{
+    margin-top:24px;
+    max-width:38ch;
+    font-size:17px;
+    line-height:1.6;
+    color:rgba(255,255,255,0.72);
+  }
+  .cta-row{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--body);font-weight:600;font-size:14.5px;
+    padding:15px 26px;border-radius:100px;
+    display:inline-flex;align-items:center;gap:9px;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+    cursor:pointer;border:none;
+  }
+  .btn-solid{background:var(--grass);color:#fff;box-shadow:0 10px 30px -8px rgba(63,143,82,0.55);}
+  .btn-solid:hover{background:var(--grass-light);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.35);color:#fff;}
+  .btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:#fff;}
+  .btn svg{width:15px;height:15px;}
+
+  .live-dot{width:7px;height:7px;border-radius:50%;background:#7EE08A;display:inline-block;margin-right:6px;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(126,224,138,.5);}50%{box-shadow:0 0 0 6px rgba(126,224,138,0);}}
+  .scroll-cue{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    z-index:2;
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
+    color:rgba(255,255,255,0.5);
+  }
+  .scroll-cue .line{width:1px;height:34px;background:linear-gradient(180deg, rgba(255,255,255,0.7), transparent);animation:scrolldown 1.8s infinite;}
+  @keyframes scrolldown{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+  /* ---------- stats strip ---------- */
+  .stats-strip{background:var(--pine-deep);padding:26px 0;}
+  .stats-strip .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+  .stat{font-family:var(--mono);color:rgba(255,255,255,0.85);display:flex;align-items:baseline;gap:10px;}
+  .stat b{font-family:var(--disp);font-size:22px;color:var(--grass-light);font-weight:700;}
+  .stat span{font-size:11.5px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+
+  /* ---------- section shell ---------- */
+  section{position:relative;padding:120px 0;}
+  .section-head{max-width:640px;margin-bottom:64px;}
+  .section-head h2{font-size:clamp(30px,4vw,46px);margin-top:16px;line-height:1.06;}
+  .section-head p{margin-top:18px;color:var(--ink-soft);font-size:16px;line-height:1.65;}
+
+  /* ---------- services ---------- */
+  #services{background:var(--stone-light);}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;}
+  .svc-card{
+    background:#fff;padding:0 0 30px;position:relative;
+    transition:background .3s ease;
+    cursor:pointer;
+  }
+  .svc-card:hover{background:var(--pine);}
+  .svc-card:hover h3, .svc-card:hover .svc-sub li{color:#fff;}
+  .svc-card:hover .svc-desc{color:rgba(255,255,255,0.65);}
+  .svc-card:hover .svc-num{color:rgba(255,255,255,0.55);}
+  .svc-card .svc-body{padding:22px 30px 0;}
+  .svc-num{position:absolute;top:16px;right:16px;font-family:var(--mono);font-size:12px;color:#fff;background:rgba(10,43,31,0.55);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:color .3s ease;}
+  .svc-photo{width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative;background:var(--stone);}
+  .svc-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .svc-card:hover .svc-photo img{transform:scale(1.06);}
+  .svc-card h3{font-size:19px;margin-bottom:9px;transition:color .3s ease;}
+  .svc-desc{font-size:14px;color:var(--ink-soft);line-height:1.55;margin-bottom:16px;transition:color .3s ease;}
+  .svc-sub{display:flex;flex-direction:column;gap:6px;}
+  .svc-sub li{font-family:var(--mono);font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:7px;transition:color .3s ease;}
+  .svc-sub li::before{content:'';width:3px;height:3px;border-radius:50%;background:currentColor;flex-shrink:0;}
+  @media(max-width:900px){.svc-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:640px){.svc-grid{grid-template-columns:1fr;}}
+
+  /* ---------- before/after slider ---------- */
+  .ba-carousel{max-width:640px;margin:0 auto;}
+  .ba-track{position:relative;}
+  .ba-slide{display:none;}
+  .ba-slide.active{display:block;animation:revFade .5s ease;}
+  .ba-compare{
+    position:relative;width:100%;aspect-ratio:282/573;max-height:640px;
+    border-radius:18px;overflow:hidden;user-select:none;
+    box-shadow:0 24px 50px -20px rgba(15,61,44,0.35);
+    touch-action:pan-y;
+  }
+  .ba-compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none;}
+  .ba-img-before{z-index:1;}
+  .ba-img-after{z-index:2;clip-path:inset(0 50% 0 0);}
+  .ba-tag{position:absolute;top:14px;z-index:4;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:rgba(10,43,31,0.55);padding:5px 12px;border-radius:100px;}
+  .ba-tag-before{left:14px;}
+  .ba-tag-after{right:14px;}
+  .ba-handle{position:absolute;top:0;bottom:0;left:50%;width:0;z-index:5;transform:translateX(-50%);cursor:ew-resize;}
+  .ba-handle-line{position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(255,255,255,0.85);transform:translateX(-50%);}
+  .ba-handle-circle{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:44px;height:44px;border-radius:50%;background:#fff;color:var(--pine);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px rgba(0,0,0,0.3);cursor:ew-resize;
+  }
+  .ba-caption{text-align:center;margin-top:20px;}
+  .ba-caption h3{font-size:20px;margin-bottom:6px;}
+  .ba-caption p{font-size:14.5px;color:var(--ink-soft);max-width:44ch;margin:0 auto;}
+
+  .work-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px;}
+  .work-thumb{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;}
+  .work-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .work-thumb:hover img{transform:scale(1.07);}
+  .work-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,43,31,0) 55%, rgba(10,43,31,0.75) 100%);}
+  .work-thumb span{position:absolute;left:10px;bottom:9px;z-index:2;color:#fff;font-family:var(--mono);font-size:10.5px;letter-spacing:0.04em;line-height:1.3;max-width:90%;}
+  @media(max-width:760px){.work-strip{grid-template-columns:1fr 1fr;}}
+
+  /* ---------- testimonial carousel ---------- */
+  .rev-carousel{position:relative;max-width:760px;margin:0 auto;}
+  .rev-track{position:relative;overflow:hidden;border-radius:18px;}
+  .rev-track .rev-card{
+    display:none;
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);
+    backdrop-filter:blur(18px);border-radius:18px;
+    padding:44px 46px;text-align:center;
+    animation:revFade .5s ease;
+  }
+  .rev-track .rev-card.active{display:block;}
+  @keyframes revFade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .rev-stars{color:var(--grass-light);font-size:18px;letter-spacing:3px;margin-bottom:18px;}
+  .rev-quote{font-size:19px;line-height:1.6;color:#fff;max-width:52ch;margin:0 auto 22px;}
+  .rev-name{font-family:var(--mono);font-size:13px;color:rgba(255,255,255,0.6);}
+  .rev-name span{display:block;font-size:11.5px;color:rgba(255,255,255,0.4);margin-top:4px;}
+  .rev-controls{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:26px;}
+  .rev-btn{
+    width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.25);
+    background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;
+    cursor:pointer;transition:.25s;flex-shrink:0;
+  }
+  .rev-btn:hover{background:var(--grass);border-color:var(--grass);}
+  .rev-btn svg{width:16px;height:16px;}
+  .rev-dots{display:flex;gap:8px;}
+  .rev-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);cursor:pointer;transition:.25s;border:none;padding:0;}
+  .rev-dot.active{background:var(--grass-light);width:22px;border-radius:5px;}
+  @media(max-width:640px){.rev-track .rev-card{padding:34px 26px;}.rev-quote{font-size:16.5px;}}
+
+  /* ---------- about ---------- */
+  #about{background:var(--stone-light);}
+  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:80px;}
+  .about-copy .eyebrow{margin-bottom:18px;}
+  .about-copy h2{font-size:clamp(28px,3.6vw,40px);line-height:1.1;margin-bottom:22px;}
+  .about-copy p{color:var(--ink-soft);font-size:16px;line-height:1.75;margin-bottom:16px;}
+  .signature-line{
+    margin-top:28px;padding-top:24px;border-top:1px solid var(--line);
+    font-family:var(--disp);font-style:normal;font-size:20px;color:var(--pine-deep);
+  }
+  .signature-line span{display:block;font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-top:8px;letter-spacing:0.04em;}
+
+  .pillars{display:flex;flex-direction:column;gap:2px;}
+  .pillar{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:28px 30px;display:grid;grid-template-columns:44px 1fr;gap:20px;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .pillar + .pillar{margin-top:14px;}
+  .pillar:hover{border-color:var(--grass);transform:translateX(4px);}
+  .pillar-ic{width:44px;height:44px;border-radius:11px;background:var(--stone);display:flex;align-items:center;justify-content:center;}
+  .pillar-ic svg{width:21px;height:21px;stroke:var(--grass);fill:none;stroke-width:1.6;}
+  .pillar h4{font-size:17px;margin-bottom:8px;}
+  .pillar p{font-size:14.5px;color:var(--ink-soft);line-height:1.6;}
+
+  /* ---------- contact ---------- */
+  #contact{background:var(--pine);color:#fff;position:relative;overflow:hidden;}
+  #contact .topo{opacity:0.3;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;position:relative;z-index:2;}
+  #contact .eyebrow{color:var(--grass-light);margin-bottom:18px;}
+  #contact h2{color:#fff;font-size:clamp(28px,3.6vw,42px);line-height:1.1;margin-bottom:20px;}
+  #contact p.lead{color:rgba(255,255,255,0.68);font-size:16px;line-height:1.7;max-width:42ch;margin-bottom:36px;}
+  .contact-line{display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid rgba(255,255,255,0.14);font-family:var(--mono);font-size:14.5px;}
+  .contact-line:last-of-type{border-bottom:1px solid rgba(255,255,255,0.14);}
+  .contact-line .cl-ic{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .contact-line .cl-ic svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:1.6;}
+  .social-row{display:flex;gap:10px;margin-top:28px;}
+  .social-row a{width:38px;height:38px;border-radius:100px;border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;transition:.25s;}
+  .social-row a:hover{background:var(--grass);border-color:var(--grass);}
+  .social-row svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:1.6;}
+
+  .form-card{
+    position:relative;
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);
+    backdrop-filter:blur(18px);border-radius:18px;padding:36px;
+    overflow:hidden;
+  }
+  .form-card::before{
+    content:'';position:absolute;inset:0;z-index:0;
+    background-image:url('https://static.wixstatic.com/media/f5f722_e514644ee946441087d8ffe13108a87a~mv2.jpg/v1/crop/x_625,y_0,w_1751,h_2000/fill/w_700,h_800,al_c,q_85,enc_avif,quality_auto/Stone%20Path_edited.jpg');
+    background-size:cover;background-position:center;
+    opacity:0.14;
+  }
+  .form-card > *{position:relative;z-index:1;}
+  .form-head{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:22px;display:flex;justify-content:space-between;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:11.5px;font-family:var(--mono);letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;}
+  .field input, .field textarea{
+    width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);
+    border-radius:9px;padding:12px 14px;color:#fff;font-family:var(--body);font-size:14.5px;
+    transition:border-color .25s ease, background .25s ease;
+  }
+  .field input::placeholder, .field textarea::placeholder{color:rgba(255,255,255,0.32);}
+  .field input:focus, .field textarea:focus{outline:none;border-color:var(--grass-light);background:rgba(255,255,255,0.11);}
+  .field textarea{resize:vertical;min-height:96px;}
+  .form-card .btn-solid{width:100%;justify-content:center;margin-top:6px;}
+  .form-note{font-size:12px;color:rgba(255,255,255,0.4);margin-top:14px;text-align:center;}
+  .form-success{display:none;text-align:center;padding:30px 10px;}
+  .form-success svg{width:40px;height:40px;stroke:var(--grass-light);fill:none;stroke-width:1.6;margin:0 auto 14px;}
+  .form-success h4{color:#fff;font-size:19px;margin-bottom:8px;}
+  .form-success p{color:rgba(255,255,255,0.6);font-size:14px;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--pine-deep);color:rgba(255,255,255,0.55);padding:56px 0 30px;}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .foot-logo{display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--disp);font-weight:800;font-size:18px;}
+  .foot-links{display:flex;gap:44px;flex-wrap:wrap;}
+  .foot-links h5{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:14px;}
+  .foot-links a{display:block;font-size:13.5px;color:rgba(255,255,255,0.7);margin-bottom:9px;transition:color .2s;}
+  .foot-links a:hover{color:var(--grass-light);}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:12.5px;font-family:var(--mono);flex-wrap:wrap;gap:10px;}
+
+  /* ---------- reveal anim ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .about-grid, .contact-grid{grid-template-columns:1fr;gap:44px;}
+    .svc-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:760px){
+    nav.primary .navlinks{display:none;}
+    .burger{display:flex;}
+    .wrap{padding:0 22px;}
+    section{padding:80px 0;}
+    .field-row{grid-template-columns:1fr;}
+    .foot-top{flex-direction:column;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="siteHeader">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo">
+      <img class="logo-img" src="photos/365-logo.png" alt="365 Landscaping logo" width="44" height="44">
+      <span><small>Pittsburgh, PA</small></span>
+    </a>
+    <nav class="primary">
+      <ul class="navlinks">
+        <li class="has-drop"><a href="#services">Services</a>
+          <div class="dropdown">
+            <a href="#services">Lawn Care</a>
+            <a href="#services">Landscaping &amp; Hardscaping</a>
+            <a href="#services">Exterior Services</a>
+            <a href="#services">Junk Hauling</a>
+            <a href="#services">Snow &amp; Ice</a>
+          </div>
+        </li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="call-chip" href="tel:4125674407">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        412-567-4407
+      </a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero-photo"></div>
+  <div class="topo" id="topo1"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Pittsburgh, PA's fastest mower</div>
+      <h1>The only landscaping<br>company you'll<br><em>ever need.</em></h1>
+      <p class="sub">Lawn care, landscaping, hardscaping, exterior cleaning, junk hauling and snow removal — one crew, dependable 365 days a year, in every Pittsburgh season.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-solid">Get a free quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="btn btn-ghost">View services</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- ================= STATS STRIP ================= -->
+<div class="stats-strip">
+  <div class="wrap">
+    <div class="stat"><b>365</b><span>Days serviced / year</span></div>
+    <div class="stat"><b>05</b><span>Service lines</span></div>
+    <div class="stat"><b>4</b><span>Seasons covered</span></div>
+    <div class="stat"><b>100%</b><span>Owner-founded &amp; local</span></div>
+  </div>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What we do</div>
+      <h2>Five service lines. One property, fully covered.</h2>
+      <p>We provide dependable service throughout every season to keep your property looking its best — for residential and commercial properties across the Pittsburgh suburbs.</p>
+    </div>
+
+    <div class="svc-grid reveal">
+      <div class="svc-card">
+        <div class="svc-photo"><img src="https://static.wixstatic.com/media/68d40c_91638eed59b84968907cdeb681fbf8ce~mv2.png/v1/fill/w_620,h_420,al_c,q_90,enc_avif,quality_auto/68d40c_91638eed59b84968907cdeb681fbf8ce~mv2.png" alt="Lawn mower on a freshly cut Pittsburgh lawn" loading="lazy"><span class="svc-num">01</span></div>
+        <div class="svc-body">
+        <h3>Lawn Care</h3>
+        <p class="svc-desc">Routine cutting, seasonal aeration and reseeding, weed control and cleanups that keep grass healthy and thick all year.</p>
+        <ul class="svc-sub">
+          <li>Grass cutting</li><li>Aeration &amp; dethatching</li><li>Reseeding</li><li>Weeding &amp; weed control</li><li>Leaf &amp; debris cleanup</li>
+        </ul>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-photo"><img src="https://static.wixstatic.com/media/68d40c_83fd36d21ada41feba08547207b39e3c~mv2.png/v1/fill/w_620,h_420,al_c,q_90,enc_avif,quality_auto/68d40c_83fd36d21ada41feba08547207b39e3c~mv2.png" alt="Custom hardscaping patio design" loading="lazy"><span class="svc-num">02</span></div>
+        <div class="svc-body">
+        <h3>Landscaping &amp; Hardscaping</h3>
+        <p class="svc-desc">Design and installation, planting and bed work, plus retaining walls, patios and drainage built to last.</p>
+        <ul class="svc-sub">
+          <li>Design &amp; planting</li><li>Sod, mulch &amp; rock install</li><li>Retaining walls</li><li>Walkways &amp; patios</li><li>Grading &amp; drainage</li>
+        </ul>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-photo"><img src="https://static.wixstatic.com/media/68d40c_56a860f6cbb548f89b90daa08490359b~mv2.png/v1/fill/w_620,h_420,al_c,q_90,enc_avif,quality_auto/68d40c_56a860f6cbb548f89b90daa08490359b~mv2.png" alt="Pressure washing a driveway" loading="lazy"><span class="svc-num">03</span></div>
+        <div class="svc-body">
+        <h3>Exterior Services</h3>
+        <p class="svc-desc">Pressure and soft washing, window and gutter cleaning to boost curb appeal and protect your home.</p>
+        <ul class="svc-sub">
+          <li>Pressure washing</li><li>Soft washing</li><li>Window cleaning</li><li>Gutter cleaning</li>
+        </ul>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-photo"><img src="https://static.wixstatic.com/media/68d40c_68687469ad964963bdef484770bdbbeb~mv2.png/v1/fill/w_620,h_420,al_c,q_90,enc_avif,quality_auto/68d40c_68687469ad964963bdef484770bdbbeb~mv2.png" alt="Junk hauling from a property" loading="lazy"><span class="svc-num">04</span></div>
+        <div class="svc-body">
+        <h3>Junk Hauling</h3>
+        <p class="svc-desc">From yard debris to general clutter — we clear it out so your property stays clean and organized.</p>
+        <ul class="svc-sub">
+          <li>Yard debris removal</li><li>General item hauling</li>
+        </ul>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-photo"><img src="https://static.wixstatic.com/media/68d40c_689108a0030f4ff494d788d88c165037~mv2.png/v1/fill/w_620,h_420,al_c,q_90,enc_avif,quality_auto/68d40c_689108a0030f4ff494d788d88c165037~mv2.png" alt="Snow removal equipment clearing a driveway" loading="lazy"><span class="svc-num">05</span></div>
+        <div class="svc-body">
+        <h3>Snow &amp; Ice</h3>
+        <p class="svc-desc">Salting, plowing and snow removal that keeps driveways and walkways clear and safe all winter.</p>
+        <ul class="svc-sub">
+          <li>Snow plowing</li><li>Salting</li><li>Walkway clearing</li>
+        </ul>
+        </div>
+      </div>
+      <div class="svc-card" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:34px 30px;">
+        <div class="eyebrow" style="margin-bottom:14px;">Not sure where to start?</div>
+        <h3 style="margin-bottom:12px;">Tell us what your property needs</h3>
+        <p class="svc-desc">Most of our clients start with one service and add more once they see how dependable we are.</p>
+        <a href="#contact" class="btn btn-solid" style="margin-top:6px;">Request a quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section id="work" style="background:var(--stone-light);padding-top:0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Recent jobs</div>
+      <h2>Real properties. Real crew. Real results.</h2>
+      <p>Drag the slider to see the actual before-and-after on nine recent Pittsburgh-area properties.</p>
+    </div>
+
+    <div class="ba-carousel reveal">
+      <div class="ba-track" id="baTrack">
+
+        <div class="ba-slide active">
+          <div class="ba-compare" data-index="0">
+            <img class="ba-img-before" src="photos/ba/01-hedge-trim-before.jpg" alt="Overgrown hedges before trimming">
+            <img class="ba-img-after" src="photos/ba/01-hedge-trim-after.jpg" alt="Neatly trimmed hedges after service">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Hedge &amp; Border Trim</h3><p>Overgrown foundation hedges cut back and shaped along the brick walkway.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="1">
+            <img class="ba-img-before" src="photos/ba/02-foundation-cleanup-before.jpg" alt="Overgrown deck-side bed before cleanup">
+            <img class="ba-img-after" src="photos/ba/02-foundation-cleanup-after.jpg" alt="Cleared foundation bed after cleanup">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Foundation Bed Clearing</h3><p>Cleared years of overgrowth along the back deck and reset the bed line.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="2">
+            <img class="ba-img-before" src="photos/ba/03-hillside-clearing-before.jpg" alt="Overgrown hillside path before clearing">
+            <img class="ba-img-after" src="photos/ba/03-hillside-clearing-after.jpg" alt="Cleared hillside path after service">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Hillside Lot Clearing</h3><p>Cleared years of brush and overgrowth from a steep side-yard path.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="3">
+            <img class="ba-img-before" src="photos/ba/04-perennial-cleanup-before.jpg" alt="Dead perennial bed before cleanup">
+            <img class="ba-img-after" src="photos/ba/04-perennial-cleanup-after.jpg" alt="Fresh mulch bed after cleanup">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Perennial Bed Cleanup</h3><p>Cut back dead perennials and replanted a clean foundation bed.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="4">
+            <img class="ba-img-before" src="photos/ba/05-gravel-patio-before.jpg" alt="Narrow gravel path before expansion">
+            <img class="ba-img-after" src="photos/ba/05-gravel-patio-after.jpg" alt="Expanded gravel patio after regrading">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Gravel Patio Expansion</h3><p>Expanded and re-graded a narrow gravel path into a full side-yard patio.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="5">
+            <img class="ba-img-before" src="photos/ba/06-ivy-removal-before.jpg" alt="Ivy-covered wall before removal">
+            <img class="ba-img-after" src="photos/ba/06-ivy-removal-after.jpg" alt="Clean garage wall after ivy removal">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Ivy &amp; Overgrowth Removal</h3><p>Stripped invasive ivy off a garage wall and cleared the retaining ledge.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="6">
+            <img class="ba-img-before" src="photos/ba/07-bed-to-gravel-before.jpg" alt="Overgrown mulch bed before removal">
+            <img class="ba-img-after" src="photos/ba/07-bed-to-gravel-after.jpg" alt="Clean gravel driveway apron after service">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Bed Removal &amp; Regrade</h3><p>Removed an overgrown mulch bed and replaced it with a clean gravel apron.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="7">
+            <img class="ba-img-before" src="photos/ba/08-ornamental-grass-before.jpg" alt="Overgrown ornamental grasses before shaping">
+            <img class="ba-img-after" src="photos/ba/08-ornamental-grass-after.jpg" alt="Shaped ornamental grasses after service">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Ornamental Grass Shaping</h3><p>Cut back and shaped ornamental grasses along a stone foundation.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="8">
+            <img class="ba-img-before" src="photos/ba/09-terraced-bed-before.jpg" alt="Bare terraced bed before planting">
+            <img class="ba-img-after" src="photos/ba/09-terraced-bed-after.jpg" alt="Freshly planted terraced bed after service">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Terraced Retaining Wall Bed</h3><p>Replanted a terraced bed above a retaining wall with fresh mulch and perennials.</p></div>
+        </div>
+
+      </div>
+
+      <div class="rev-controls" style="margin-top:20px;">
+        <button class="rev-btn" id="baPrev" aria-label="Previous project" style="border-color:var(--line);color:var(--pine-deep);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="rev-dots" id="baDots"></div>
+        <button class="rev-btn" id="baNext" aria-label="Next project" style="border-color:var(--line);color:var(--pine-deep);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="work-strip reveal">
+      <div class="work-thumb"><img src="photos/ba/standalone-paver-edging.jpg" alt="New paver edging and patio base under construction" loading="lazy"><span>Paver edging in progress</span></div>
+      <div class="work-thumb"><img src="photos/ba/standalone-mowed-yard.jpg" alt="Freshly mowed backyard with trimmed hedge line" loading="lazy"><span>Weekly mowing</span></div>
+      <div class="work-thumb"><img src="photos/review-retaining-wall-1.jpg" alt="New retaining wall and gate installation" loading="lazy"><span>Retaining wall — Google review</span></div>
+      <div class="work-thumb"><img src="photos/review-bed-cleanup.jpg" alt="Trimmed shrubs and cleared garden bed" loading="lazy"><span>Bed cleanup — Google review</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= TESTIMONIALS ================= -->
+<section id="reviews" style="background:var(--pine-deep);color:#fff;overflow:hidden;">
+  <div class="topo" id="topo2" style="opacity:.35;"></div>
+  <div class="wrap" style="position:relative;z-index:2;">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--grass-light);">Google reviews</div>
+      <h2 style="color:#fff;">What Pittsburgh homeowners are saying.</h2>
+      <p style="color:rgba(255,255,255,0.6);">Real, unedited reviews from 365 Landscaping's Google Business Profile.</p>
+    </div>
+
+    <div class="rev-carousel reveal">
+      <div class="rev-track" id="revTrack">
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">"Can't even describe what a great experience Jake and his crew were. Exceeded my expectations. Total makeover."</p>
+          <div class="rev-name">Charles Spiegel <span>Google review</span></div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">"365 Landscaping is great to work with. They trimmed overgrown bushes for us and we are very happy with the results. They were very thorough with the job, communicated and checked in multiple times, and cleaned everything up. Will definitely be using them again!"</p>
+          <div class="rev-name">Cayla Cauley <span>Google review</span></div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">"365 landscaping — Jake and his team excavated an old retaining wall that fell over this past winter. Reasonable price."</p>
+          <div class="rev-name">John Hamar <span>Google review</span></div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">"Easy communication, scheduling, and job completion. They hauled away a bunch of junk from our garage and even swept up afterwards which was not requested or expected. Very pleased with their work ethic!!"</p>
+          <div class="rev-name">Jennifer Balkey <span>Google review</span></div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">"Fantastic crew, very professional, always showed up on time and got right to work, the patio they did for me looks amazing!!! Highly recommend these guys for any and all of your yardwork needs!!"</p>
+          <div class="rev-name">Nichole Baker <span>Google review</span></div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">"We've been using 365 Landscaping for almost 2 years now. The staff and owner are kind and hardworking."</p>
+          <div class="rev-name">Robin Sheffey <span>Google review</span></div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">"We've used 365 Landscaping twice now and have been very satisfied with the work. The prices are reasonable, they arrive on time, complete all tasks, and clean up before leaving. We are so satisfied that we have recommended them to several of our friends."</p>
+          <div class="rev-name">William Copley <span>Google review</span></div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">"Jake and his crew did an excellent job in a short amount of time. I was impressed with the results and they cleaned up everything so thoroughly. I had my lawn mowed, bushes trimmed, and a lot of branches taken off two big trees."</p>
+          <div class="rev-name">Tracy Weaver <span>Google review</span></div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">"I can't say enough good things about my experience with Jake and his excellent crew. They arrived on time and kept me involved as they proceeded with their work. He completed all agreed upon work — my house now has curb appeal."</p>
+          <div class="rev-name">kay m <span>Google review</span></div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-quote">"Jake and his team do a great job. They've been mowing our grass for the past three years. Thanks, Jake!"</p>
+          <div class="rev-name">Paige Pokorney <span>Google review</span></div>
+        </div>
+      </div>
+      <div class="rev-controls">
+        <button class="rev-btn" id="revPrev" aria-label="Previous review">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="rev-dots" id="revDots"></div>
+        <button class="rev-btn" id="revNext" aria-label="Next review">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+      <p style="text-align:center;margin-top:22px;">
+        <a href="https://share.google/giP5uBK1TSUPNqMfq" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:12.5px;color:rgba(255,255,255,0.55);text-decoration:underline;text-underline-offset:3px;">Read all reviews on Google →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy reveal">
+      <div class="eyebrow">Our story</div>
+      <h2>Started with a mower. Never stopped showing up.</h2>
+      <p>365 Landscaping was founded by <strong>Jake Mroz</strong>, a young entrepreneur who started out mowing lawns, raking leaves and shoveling snow for his neighbors.</p>
+      <p>What began as a handful of favors turned into a genuine passion for improving the way properties look across his community — and has since grown into a full-service crew trusted by clients throughout the Pittsburgh suburbs.</p>
+      <div class="signature-line">"The only landscaping company you'll ever need."
+        <span>— the standard we hold ourselves to on every property, every season.</span>
+      </div>
+    </div>
+
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="pillar-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+        <div><h4>Expert team</h4><p>Skilled professionals who take the time to understand your property and deliver solutions tailored to it — not a one-size-fits-all visit.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
+        <div><h4>Year-round care</h4><p>Lawn maintenance, landscaping, cleanups, hardscaping and winter snow management — dependable coverage in every season, not just growing season.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div><h4>Customer satisfaction</h4><p>Lasting relationships built on transparent communication, fair pricing and unmistakable service quality, all year long.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="topo" id="topo3"></div>
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Let's build an outdoor space your family can enjoy all season long.</h2>
+      <p class="lead">Fill out the form and we'll follow up to scope your property — or reach out directly using the details below.</p>
+
+      <div class="contact-line">
+        <span class="cl-ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <a href="tel:4125674407">412-567-4407</a>
+      </div>
+      <div class="contact-line">
+        <span class="cl-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg></span>
+        <a href="mailto:jake@365landscapingservices.com">jake@365landscapingservices.com</a>
+      </div>
+      <div class="social-row">
+        <a href="https://www.instagram.com/365landscapingpgh/" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61588654370224" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M15 3h-2a5 5 0 0 0-5 5v3H6v4h2v6h4v-6h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="form-card reveal">
+      <form id="quoteForm">
+        <div class="form-head"><span>Request a quote</span></div>
+        <div class="field-row">
+          <div class="field"><label for="fname">First name</label><input id="fname" type="text" placeholder="Jake" required></div>
+          <div class="field"><label for="lname">Last name</label><input id="lname" type="text" placeholder="Mroz" required></div>
+        </div>
+        <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="you@email.com" required></div>
+        <div class="field"><label for="msg">What does your property need?</label><textarea id="msg" placeholder="Tell us about your property and what you'd like done..." required></textarea></div>
+        <button type="submit" class="btn btn-solid">Submit request
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <p class="form-note">We respond to every request — no bots, no auto-quotes.</p>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>
+        <h4>Thanks — request received.</h4>
+        <p>Jake and the crew will follow up shortly to scope your property.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">
+          <img src="photos/365-logo.png" alt="365 Landscaping logo" style="width:44px;height:44px;object-fit:contain;filter:brightness(0) invert(1);">
+        </div>
+        <p style="margin-top:14px;font-size:13px;max-width:34ch;line-height:1.6;">Full-service outdoor care for homes and businesses across the Pittsburgh suburbs — 365 days a year.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h5>Services</h5>
+          <a href="#services">Lawn Care</a>
+          <a href="#services">Landscaping &amp; Hardscaping</a>
+          <a href="#services">Exterior Services</a>
+          <a href="#services">Junk Hauling</a>
+          <a href="#services">Snow &amp; Ice</a>
+        </div>
+        <div>
+          <h5>Company</h5>
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div>
+          <h5>Direct</h5>
+          <a href="tel:4125674407">412-567-4407</a>
+          <a href="mailto:jake@365landscapingservices.com">jake@365landscapingservices.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 365 Landscaping LLC · Pittsburgh, PA</span>
+      <span>Built for year-round curb appeal.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive:true});
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // topo contour line generator
+  function drawTopo(id, stroke){
+    const el = document.getElementById(id);
+    if(!el) return;
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns,'svg');
+    svg.setAttribute('viewBox','0 0 1200 800');
+    svg.setAttribute('preserveAspectRatio','none');
+    for(let i=0;i<7;i++){
+      const path = document.createElementNS(ns,'path');
+      const yBase = 80 + i*100 + (i%2===0?0:40);
+      let d = `M -50 ${yBase}`;
+      for(let x=0;x<=1300;x+=150){
+        const y = yBase + Math.sin((x/220)+i)*46 + (i*6);
+        d += ` Q ${x-75} ${y-30}, ${x} ${y}`;
+      }
+      path.setAttribute('d', d);
+      path.setAttribute('fill','none');
+      path.setAttribute('stroke', stroke);
+      path.setAttribute('stroke-width','1');
+      path.setAttribute('opacity', (0.5 - i*0.05).toFixed(2));
+      svg.appendChild(path);
+    }
+    el.appendChild(svg);
+  }
+  drawTopo('topo1','rgba(255,255,255,0.5)');
+  drawTopo('topo2','rgba(255,255,255,0.35)');
+  drawTopo('topo3','rgba(255,255,255,0.35)');
+
+  // before/after drag sliders
+  (function(){
+    document.querySelectorAll('.ba-compare').forEach(function(compare){
+      const after = compare.querySelector('.ba-img-after');
+      const handle = compare.querySelector('.ba-handle');
+      let dragging = false;
+      function setPct(pct){
+        pct = Math.max(0, Math.min(100, pct));
+        after.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+        handle.style.left = pct + '%';
+      }
+      function pctFromEvent(e){
+        const rect = compare.getBoundingClientRect();
+        const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+        return (x / rect.width) * 100;
+      }
+      function start(e){ dragging = true; setPct(pctFromEvent(e)); e.preventDefault(); }
+      function move(e){ if(!dragging) return; setPct(pctFromEvent(e)); }
+      function end(){ dragging = false; }
+      handle.addEventListener('mousedown', start);
+      compare.addEventListener('mousedown', start);
+      window.addEventListener('mousemove', move);
+      window.addEventListener('mouseup', end);
+      handle.addEventListener('touchstart', start, {passive:false});
+      compare.addEventListener('touchstart', start, {passive:false});
+      window.addEventListener('touchmove', move, {passive:false});
+      window.addEventListener('touchend', end);
+    });
+  })();
+
+  // before/after project carousel
+  (function(){
+    const track = document.getElementById('baTrack');
+    const slides = track ? Array.from(track.querySelectorAll('.ba-slide')) : [];
+    const dotsWrap = document.getElementById('baDots');
+    if(!slides.length) return;
+    let idx = 0;
+    slides.forEach((s,i) => {
+      const dot = document.createElement('button');
+      dot.className = 'rev-dot' + (i===0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Show project ' + (i+1));
+      dot.addEventListener('click', () => go(i));
+      dotsWrap.appendChild(dot);
+    });
+    function render(){
+      slides.forEach((s,i) => s.classList.toggle('active', i===idx));
+      dotsWrap.querySelectorAll('.rev-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+    }
+    function go(i){ idx = (i + slides.length) % slides.length; render(); }
+    document.getElementById('baNext').addEventListener('click', () => go(idx+1));
+    document.getElementById('baPrev').addEventListener('click', () => go(idx-1));
+    render();
+  })();
+
+  (function(){
+    const track = document.getElementById('revTrack');
+    const cards = track ? Array.from(track.querySelectorAll('.rev-card')) : [];
+    const dotsWrap = document.getElementById('revDots');
+    if(!cards.length) return;
+    let idx = 0;
+    let timer;
+    cards.forEach((c,i) => {
+      const dot = document.createElement('button');
+      dot.className = 'rev-dot' + (i===0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Show review ' + (i+1));
+      dot.addEventListener('click', () => go(i));
+      dotsWrap.appendChild(dot);
+    });
+    function render(){
+      cards.forEach((c,i) => c.classList.toggle('active', i===idx));
+      dotsWrap.querySelectorAll('.rev-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
+    }
+    function go(i){ idx = (i + cards.length) % cards.length; render(); restart(); }
+    function next(){ go(idx+1); }
+    function prev(){ go(idx-1); }
+    function restart(){ clearInterval(timer); timer = setInterval(next, 6000); }
+    document.getElementById('revNext').addEventListener('click', next);
+    document.getElementById('revPrev').addEventListener('click', prev);
+    render();
+    restart();
+  })();
+
+  // mobile burger -> jump to contact for simplicity + toggle simple nav
+  const burger = document.querySelector('.burger');
+  const navlinks = document.querySelector('.navlinks');
+  burger.addEventListener('click', () => {
+    const open = navlinks.style.display === 'flex';
+    navlinks.style.display = open ? 'none' : 'flex';
+    navlinks.style.cssText += open ? '' : 'position:fixed;top:78px;left:20px;right:20px;background:#fff;flex-direction:column;padding:20px;border-radius:14px;box-shadow:0 20px 45px -14px rgba(15,61,44,0.3);z-index:99;gap:16px;';
+    navlinks.querySelectorAll('a').forEach(a => a.style.color = open ? '' : 'var(--ink)');
+  });
+
+  // form
+  const form = document.getElementById('quoteForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+</script>
+</body>
+</html>
