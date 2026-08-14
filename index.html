@@ -246,7 +246,6 @@
   .svc-sub li{font-family:var(--mono);font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:7px;transition:color .3s ease;}
   .svc-sub li::before{content:'';width:3px;height:3px;border-radius:50%;background:currentColor;flex-shrink:0;}
   @media(max-width:900px){.svc-grid{grid-template-columns:1fr 1fr;}}
-  @media(max-width:640px){.svc-grid{grid-template-columns:1fr;}}
 
   /* ---------- before/after slider ---------- */
   .ba-carousel{max-width:640px;margin:0 auto;}
@@ -283,7 +282,6 @@
   .work-thumb:hover img{transform:scale(1.07);}
   .work-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,43,31,0) 55%, rgba(10,43,31,0.75) 100%);}
   .work-thumb span{position:absolute;left:10px;bottom:9px;z-index:2;color:#fff;font-family:var(--mono);font-size:10.5px;letter-spacing:0.04em;line-height:1.3;max-width:90%;}
-  @media(max-width:760px){.work-strip{grid-template-columns:1fr 1fr;}}
 
   /* ---------- testimonial carousel ---------- */
   .rev-carousel{position:relative;max-width:760px;margin:0 auto;}
@@ -404,15 +402,100 @@
   @media(max-width:980px){
     .hero-grid{grid-template-columns:1fr;}
     .about-grid, .contact-grid{grid-template-columns:1fr;gap:44px;}
+  }
+  @media(min-width:641px) and (max-width:980px){
     .svc-grid{grid-template-columns:1fr 1fr;}
   }
+
   @media(max-width:760px){
-    nav.primary .navlinks{display:none;}
-    .burger{display:flex;}
     .wrap{padding:0 22px;}
     section{padding:80px 0;}
     .field-row{grid-template-columns:1fr;}
     .foot-top{flex-direction:column;}
+
+    /* ---- header: logo left, phone centered, burger right ---- */
+    .nav-inner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;}
+    nav.primary{display:contents;}
+    .logo{flex-direction:column;align-items:flex-start;gap:4px;}
+    .logo-swap{width:60px;height:36px;}
+    .logo small{white-space:nowrap;font-size:9px;letter-spacing:0.13em;}
+    .call-chip{justify-self:center;padding:8px 14px;font-size:12.5px;gap:7px;}
+    .burger{justify-self:end;display:flex;width:40px;height:40px;}
+    .burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .burger.is-open span:nth-child(2){opacity:0;}
+    .burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+    /* ---- mobile menu panel ---- */
+    .navlinks{display:none;}
+    .navlinks.open{
+      display:flex;flex-direction:column;align-items:stretch;gap:2px;
+      position:absolute;top:calc(100% + 10px);left:22px;right:22px;
+      background:#fff;border:1px solid var(--line);border-radius:14px;
+      padding:12px;box-shadow:0 20px 45px -14px rgba(15,61,44,0.3);
+      max-height:calc(100vh - 130px);overflow-y:auto;z-index:99;
+    }
+    .navlinks.open li{width:100%;}
+    .navlinks.open a{color:var(--ink);padding:12px;border-radius:9px;font-size:15px;}
+    .navlinks.open a::after{display:none;}
+
+    /* Services row expands in flow instead of floating over the list */
+    .has-drop{position:static;display:block;}
+    .has-drop::after{display:none;}
+    .navlinks.open .has-drop > a{display:flex;align-items:center;justify-content:space-between;}
+    .navlinks.open .has-drop > a::after{
+      display:block;content:'';position:static;
+      width:7px;height:7px;background:none;border:0;
+      border-right:2px solid var(--ink-soft);border-bottom:2px solid var(--ink-soft);
+      transform:rotate(45deg);margin-right:4px;transition:transform .25s ease;
+    }
+    .navlinks.open .has-drop.open > a::after{transform:rotate(-135deg);}
+    .navlinks.open .dropdown{
+      position:static;transform:none;opacity:1;visibility:visible;
+      background:transparent;border:0;box-shadow:none;min-width:0;
+      padding:0 0 6px 12px;display:none;transition:none;
+    }
+    .navlinks.open .has-drop.open .dropdown{display:block;}
+    .navlinks.open .dropdown a{padding:10px 12px;font-size:14px;}
+
+    /* ---- stats strip ---- */
+    .stats-strip{padding:22px 0;}
+    .stats-strip .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px;}
+    .stat{flex-direction:column;align-items:center;text-align:center;gap:5px;}
+    .stat b{font-size:24px;}
+    .stat span{font-size:10.5px;line-height:1.35;}
+
+    /* ---- services: one column, consistent sizing ---- */
+    .svc-grid{grid-template-columns:1fr;}
+    .svc-photo{aspect-ratio:16/10;}
+    .svc-card{padding-bottom:26px;}
+    .svc-card .svc-body{padding:20px 22px 0;}
+    .svc-card h3{font-size:20px;}
+    .svc-desc{font-size:14.5px;}
+    .svc-sub li{font-size:12.5px;}
+    .svc-num{top:14px;right:14px;}
+
+    /* ---- before/after: shorter so caption + arrows fit ---- */
+    .ba-compare{aspect-ratio:4/5;max-height:none;}
+    .ba-caption{margin-top:14px;}
+    .ba-caption h3{font-size:18px;}
+    .ba-caption p{font-size:13.5px;}
+    .ba-tag{font-size:10px;padding:4px 10px;top:10px;}
+    .ba-handle-circle{width:38px;height:38px;}
+
+    /* ---- work strip: one column, bigger images ---- */
+    .work-strip{grid-template-columns:1fr;gap:14px;margin-top:40px;}
+    .work-thumb{aspect-ratio:16/10;}
+    .work-thumb span{font-size:12px;left:14px;bottom:12px;}
+  }
+
+  /* touch devices: don't leave hover states stuck after a tap */
+  @media(hover:none){
+    .svc-card:hover{background:#fff;}
+    .svc-card:hover h3{color:var(--ink);}
+    .svc-card:hover .svc-desc, .svc-card:hover .svc-sub li{color:var(--ink-soft);}
+    .svc-card:hover .svc-num{color:#fff;}
+    .svc-card:hover .svc-photo img{transform:none;}
+    .work-thumb:hover img{transform:none;}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important;}
@@ -492,7 +575,7 @@
     <div class="section-head reveal">
       <div class="eyebrow">What we do</div>
       <h2>Five service lines. One property, fully covered.</h2>
-      <p>We provide dependable service throughout every season to keep your property looking its best — for residential and commercial properties across the Pittsburgh suburbs.</p>
+      <p>We provide dependable service throughout every season to keep your property looking its best. Serving residential and commercial properties across the Pittsburgh suburbs.</p>
     </div>
 
     <div class="svc-grid reveal">
@@ -530,7 +613,7 @@
         <div class="svc-photo"><img src="photos/Junk_Hauling.png" alt="Junk hauling from a property" loading="lazy"><span class="svc-num">04</span></div>
         <div class="svc-body">
         <h3>Junk Hauling</h3>
-        <p class="svc-desc">From yard debris to general clutter — we clear it out so your property stays clean and organized.</p>
+        <p class="svc-desc">From yard debris to general clutter, we clear it out so your property stays clean and organized.</p>
         <ul class="svc-sub">
           <li>Yard debris removal</li><li>General item hauling</li>
         </ul>
@@ -683,7 +766,7 @@
     </div>
 
 <div class="work-strip reveal">
-      <div class="work-thumb"><img src="photos/hardscaping_1.jpg" alt="Gray block retaining wall with capstone beside concrete steps and a wooden gate" loading="lazy" width="800" height="600"><span>Block retaining wall &amp; steps</span></div>
+      <div class="work-thumb"><img src="photos/hardscaping_1.jpg" alt="Gray block retaining wall with capstone beside concrete steps and a wooden gate" loading="lazy" width="800" height="600"><span>Block retaining wall &amp; gate</span></div>
       <div class="work-thumb"><img src="photos/mulch_1.jpg" alt="Red mulch bed with flagstone stepping stones and a rounded river rock border" loading="lazy" width="800" height="600"><span>Stepping stones &amp; mulch beds</span></div>
       <div class="work-thumb"><img src="photos/Weekly_Mowing.jpg" alt="Large open lawn with fresh mower stripes running toward a tree line" loading="lazy" width="800" height="600"><span>Weekly mowing, large property</span></div>
       <div class="work-thumb"><img src="photos/hardscaping_4.jpg" alt="Curved brown block retaining wall terracing a wooded backyard slope" loading="lazy" width="800" height="600"><span>Terraced wall, wooded lot</span></div>    </div>
@@ -777,9 +860,9 @@
       <div class="eyebrow">Our story</div>
       <h2>Started with a mower. Never stopped showing up.</h2>
       <p>365 Landscaping was founded by <strong>Jake Mroz</strong>, a young entrepreneur who started out mowing lawns, raking leaves and shoveling snow for his neighbors.</p>
-      <p>What began as a handful of favors turned into a genuine passion for improving the way properties look across his community — and has since grown into a full-service crew trusted by clients throughout the Pittsburgh suburbs.</p>
+      <p>What began as a handful of favors turned into a genuine passion for improving the way properties look across his community, and has since grown into a full-service crew trusted by clients throughout the Pittsburgh suburbs.</p>
       <div class="signature-line">"The only landscaping company you'll ever need."
-        <span>— the standard we hold ourselves to on every property, every season.</span>
+        <span>The standard we hold ourselves to on every property, every season.</span>
       </div>
     </div>
 
@@ -807,7 +890,7 @@
     <div class="reveal">
       <div class="eyebrow">Get in touch</div>
       <h2>Let's build an outdoor space your family can enjoy all season long.</h2>
-      <p class="lead">Fill out the form and we'll follow up to scope your property — or reach out directly using the details below.</p>
+      <p class="lead">Fill out the form and we'll follow up to scope your property, or reach out directly using the details below.</p>
 
       <div class="contact-line">
         <span class="cl-ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
@@ -941,33 +1024,46 @@
   drawTopo('topo2','rgba(255,255,255,0.35)');
   drawTopo('topo3','rgba(255,255,255,0.35)');
 
-  // before/after drag sliders
+// before/after drag sliders
   (function(){
     document.querySelectorAll('.ba-compare').forEach(function(compare){
-      const after = compare.querySelector('.ba-img-after');
+      const after  = compare.querySelector('.ba-img-after');
       const handle = compare.querySelector('.ba-handle');
-      let dragging = false;
+      let dragging = false, decided = false, sx = 0, sy = 0;
+
       function setPct(pct){
         pct = Math.max(0, Math.min(100, pct));
         after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
         handle.style.left = pct + '%';
       }
-      function pctFromEvent(e){
+      function pctFromX(clientX){
         const rect = compare.getBoundingClientRect();
-        const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
-        return (x / rect.width) * 100;
+        return ((clientX - rect.left) / rect.width) * 100;
       }
-      function start(e){ dragging = true; setPct(pctFromEvent(e)); e.preventDefault(); }
-      function move(e){ if(!dragging) return; setPct(pctFromEvent(e)); }
-      function end(){ dragging = false; }
-      handle.addEventListener('mousedown', start);
-      compare.addEventListener('mousedown', start);
-      window.addEventListener('mousemove', move);
-      window.addEventListener('mouseup', end);
-      handle.addEventListener('touchstart', start, {passive:false});
-      compare.addEventListener('touchstart', start, {passive:false});
-      window.addEventListener('touchmove', move, {passive:false});
-      window.addEventListener('touchend', end);
+
+      compare.addEventListener('mousedown', function(e){
+        dragging = true; setPct(pctFromX(e.clientX)); e.preventDefault();
+      });
+      window.addEventListener('mousemove', function(e){ if(dragging) setPct(pctFromX(e.clientX)); });
+      window.addEventListener('mouseup', function(){ dragging = false; });
+
+      compare.addEventListener('touchstart', function(e){
+        sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+        dragging = false; decided = false;
+      }, {passive:true});
+
+      compare.addEventListener('touchmove', function(e){
+        const t = e.touches[0];
+        if(!decided){
+          const dx = Math.abs(t.clientX - sx), dy = Math.abs(t.clientY - sy);
+          if(dx < 8 && dy < 8) return;
+          decided = true;
+          dragging = dx > dy;
+        }
+        if(dragging){ e.preventDefault(); setPct(pctFromX(t.clientX)); }
+      }, {passive:false});
+
+      compare.addEventListener('touchend', function(){ dragging = false; decided = false; });
     });
   })();
 
@@ -1023,15 +1119,56 @@
     restart();
   })();
 
-  // mobile burger -> jump to contact for simplicity + toggle simple nav
-  const burger = document.querySelector('.burger');
-  const navlinks = document.querySelector('.navlinks');
-  burger.addEventListener('click', () => {
-    const open = navlinks.style.display === 'flex';
-    navlinks.style.display = open ? 'none' : 'flex';
-    navlinks.style.cssText += open ? '' : 'position:fixed;top:78px;left:20px;right:20px;background:#fff;flex-direction:column;padding:20px;border-radius:14px;box-shadow:0 20px 45px -14px rgba(15,61,44,0.3);z-index:99;gap:16px;';
-    navlinks.querySelectorAll('a').forEach(a => a.style.color = open ? '' : 'var(--ink)');
-  });
+// mobile menu
+  (function(){
+    const burger   = document.querySelector('.burger');
+    const navlinks = document.querySelector('.navlinks');
+    const hasDrop  = document.querySelector('.has-drop');
+    const dropLink = hasDrop ? hasDrop.querySelector(':scope > a') : null;
+    if(!burger || !navlinks) return;
+
+    const isMobile = () => window.matchMedia('(max-width:760px)').matches;
+
+    function close(){
+      navlinks.classList.remove('open');
+      burger.classList.remove('is-open');
+      if(hasDrop) hasDrop.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+
+    burger.setAttribute('aria-expanded','false');
+    burger.addEventListener('click', function(e){
+      e.stopPropagation();
+      const open = navlinks.classList.toggle('open');
+      burger.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if(!open && hasDrop) hasDrop.classList.remove('open');
+    });
+
+    if(dropLink){
+      dropLink.addEventListener('click', function(e){
+        if(!isMobile()) return;
+        e.preventDefault();
+        hasDrop.classList.toggle('open');
+      });
+    }
+
+    navlinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        if(!isMobile()) return;
+        if(hasDrop && a.parentElement === hasDrop) return;
+        close();
+      });
+    });
+
+    document.addEventListener('click', function(e){
+      if(!navlinks.classList.contains('open')) return;
+      if(navlinks.contains(e.target) || burger.contains(e.target)) return;
+      close();
+    });
+
+    window.addEventListener('resize', function(){ if(!isMobile()) close(); });
+  })();
 
   // form
   const form = document.getElementById('quoteForm');
