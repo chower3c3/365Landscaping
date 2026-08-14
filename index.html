@@ -32,8 +32,7 @@
     --mono:'Poppins', sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
+html{scroll-behavior:smooth;scroll-padding-top:96px;}  body{
     font-family:var(--body);
     color:var(--ink);
     background:var(--stone-light);
@@ -390,6 +389,7 @@
 
   @media(max-width:760px){
     .wrap{padding:0 22px;}
+    html{scroll-padding-top:112px;}
     section{padding:80px 0;}
     .field-row{grid-template-columns:1fr;}
     .foot-top{flex-direction:column;}
