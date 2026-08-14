@@ -102,26 +102,7 @@
   .navlinks a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--grass-light);transition:width .25s ease;}
   header.scrolled .navlinks a::after{background:var(--grass);}
   .navlinks a:hover::after{width:100%;}
-.has-drop{position:relative;}
-  .has-drop::after{
-    content:'';position:absolute;top:100%;left:-24px;right:-24px;height:24px;
-  }
-  .dropdown{
-    position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);
-    background:#fff;border-radius:12px;box-shadow:0 20px 45px -14px rgba(15,61,44,0.28);
-    padding:10px;min-width:220px;
-    opacity:0;visibility:hidden;
-    transition:opacity .22s ease, transform .22s ease, visibility 0s linear .22s;
-    border:1px solid var(--line);
-  }
-  .has-drop:hover .dropdown,
-  .has-drop:focus-within .dropdown{
-    opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);
-    transition:opacity .22s ease, transform .22s ease, visibility 0s linear 0s;
-  }
-  .dropdown a{display:block;color:var(--ink)!important;padding:9px 12px;border-radius:8px;font-size:13.5px;font-weight:500;}
-  .dropdown a:hover{background:var(--stone-light);color:var(--grass)!important;}
-  .dropdown a::after{display:none;}
+
   .call-chip{
     display:flex;align-items:center;gap:9px;
     font-family:var(--mono);font-size:13px;font-weight:500;
@@ -425,37 +406,23 @@
     .burger.is-open span:nth-child(2){opacity:0;}
     .burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-    /* ---- mobile menu panel ---- */
+/* ---- mobile menu panel ---- */
     .navlinks{display:none;}
     .navlinks.open{
-      display:flex;flex-direction:column;align-items:stretch;gap:2px;
+      display:flex;flex-direction:column;align-items:stretch;gap:6px;
       position:absolute;top:calc(100% + 10px);left:22px;right:22px;
       background:#fff;border:1px solid var(--line);border-radius:14px;
-      padding:12px;box-shadow:0 20px 45px -14px rgba(15,61,44,0.3);
-      max-height:calc(100vh - 130px);overflow-y:auto;z-index:99;
+      padding:10px;box-shadow:0 20px 45px -14px rgba(15,61,44,0.3);
+      z-index:99;
     }
     .navlinks.open li{width:100%;}
-    .navlinks.open a{color:var(--ink);padding:12px;border-radius:9px;font-size:15px;}
+    .navlinks.open li + li{border-top:1px solid var(--line);padding-top:6px;}
+    .navlinks.open a{
+      display:block;color:var(--ink);font-size:16px;font-weight:600;
+      padding:17px 14px;border-radius:10px;
+    }
     .navlinks.open a::after{display:none;}
-
-    /* Services row expands in flow instead of floating over the list */
-    .has-drop{position:static;display:block;}
-    .has-drop::after{display:none;}
-    .navlinks.open .has-drop > a{display:flex;align-items:center;justify-content:space-between;}
-    .navlinks.open .has-drop > a::after{
-      display:block;content:'';position:static;
-      width:7px;height:7px;background:none;border:0;
-      border-right:2px solid var(--ink-soft);border-bottom:2px solid var(--ink-soft);
-      transform:rotate(45deg);margin-right:4px;transition:transform .25s ease;
-    }
-    .navlinks.open .has-drop.open > a::after{transform:rotate(-135deg);}
-    .navlinks.open .dropdown{
-      position:static;transform:none;opacity:1;visibility:visible;
-      background:transparent;border:0;box-shadow:none;min-width:0;
-      padding:0 0 6px 12px;display:none;transition:none;
-    }
-    .navlinks.open .has-drop.open .dropdown{display:block;}
-    .navlinks.open .dropdown a{padding:10px 12px;font-size:14px;}
+    .navlinks.open a:active{background:var(--stone-light);}
 
     /* ---- stats strip ---- */
     .stats-strip{padding:22px 0;}
@@ -517,15 +484,7 @@
     </a>
     <nav class="primary">
       <ul class="navlinks">
-        <li class="has-drop"><a href="#services">Services</a>
-          <div class="dropdown">
-            <a href="#services">Lawn Care</a>
-            <a href="#services">Landscaping &amp; Hardscaping</a>
-            <a href="#services">Exterior Services</a>
-            <a href="#services">Junk Hauling</a>
-            <a href="#services">Snow &amp; Ice</a>
-          </div>
-        </li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -1123,8 +1082,6 @@
   (function(){
     const burger   = document.querySelector('.burger');
     const navlinks = document.querySelector('.navlinks');
-    const hasDrop  = document.querySelector('.has-drop');
-    const dropLink = hasDrop ? hasDrop.querySelector(':scope > a') : null;
     if(!burger || !navlinks) return;
 
     const isMobile = () => window.matchMedia('(max-width:760px)').matches;
@@ -1132,7 +1089,6 @@
     function close(){
       navlinks.classList.remove('open');
       burger.classList.remove('is-open');
-      if(hasDrop) hasDrop.classList.remove('open');
       burger.setAttribute('aria-expanded','false');
     }
 
@@ -1142,23 +1098,10 @@
       const open = navlinks.classList.toggle('open');
       burger.classList.toggle('is-open', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if(!open && hasDrop) hasDrop.classList.remove('open');
     });
 
-    if(dropLink){
-      dropLink.addEventListener('click', function(e){
-        if(!isMobile()) return;
-        e.preventDefault();
-        hasDrop.classList.toggle('open');
-      });
-    }
-
     navlinks.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
-        if(!isMobile()) return;
-        if(hasDrop && a.parentElement === hasDrop) return;
-        close();
-      });
+      a.addEventListener('click', function(){ if(isMobile()) close(); });
     });
 
     document.addEventListener('click', function(e){
