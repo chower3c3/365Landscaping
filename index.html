@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="icon" href="photos/365-logo.png">
+<link rel="icon" href="photos/365-logo-green.png">
 <style>
   :root{
     --pine:#0F3D2C;
@@ -85,12 +85,14 @@
   .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;}
   .logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:800;font-size:19px;color:#fff;letter-spacing:-0.02em;transition:color .35s ease;}
   header.scrolled .logo{color:var(--pine-deep);}
+  .logo-swap{position:relative;display:block;width:68px;height:40px;flex-shrink:0;}
   .logo-img{
-    width:44px;height:44px;object-fit:contain;flex-shrink:0;
-    filter:brightness(0) invert(1);
-    transition:filter .35s ease;
+    position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+    transition:opacity .35s ease;
   }
-  header.scrolled .logo-img{filter:none;}
+  .logo-dark{opacity:0;}
+  header.scrolled .logo-light{opacity:0;}
+  header.scrolled .logo-dark{opacity:1;}
   .logo small{display:block;font-family:var(--mono);font-weight:400;font-size:9.5px;letter-spacing:0.16em;color:rgba(255,255,255,0.65);text-transform:uppercase;}
   header.scrolled .logo small{color:var(--ink-soft);}
   nav.primary{display:flex;align-items:center;gap:36px;}
@@ -100,15 +102,23 @@
   .navlinks a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--grass-light);transition:width .25s ease;}
   header.scrolled .navlinks a::after{background:var(--grass);}
   .navlinks a:hover::after{width:100%;}
-  .has-drop{position:relative;}
+.has-drop{position:relative;}
+  .has-drop::after{
+    content:'';position:absolute;top:100%;left:-24px;right:-24px;height:24px;
+  }
   .dropdown{
-    position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%) translateY(-6px);
+    position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);
     background:#fff;border-radius:12px;box-shadow:0 20px 45px -14px rgba(15,61,44,0.28);
     padding:10px;min-width:220px;
-    opacity:0;visibility:hidden;transition:opacity .22s ease, transform .22s ease;
+    opacity:0;visibility:hidden;
+    transition:opacity .22s ease, transform .22s ease, visibility 0s linear .22s;
     border:1px solid var(--line);
   }
-  .has-drop:hover .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+  .has-drop:hover .dropdown,
+  .has-drop:focus-within .dropdown{
+    opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);
+    transition:opacity .22s ease, transform .22s ease, visibility 0s linear 0s;
+  }
   .dropdown a{display:block;color:var(--ink)!important;padding:9px 12px;border-radius:8px;font-size:13.5px;font-weight:500;}
   .dropdown a:hover{background:var(--stone-light);color:var(--grass)!important;}
   .dropdown a::after{display:none;}
@@ -416,7 +426,10 @@
 <header id="siteHeader">
   <div class="wrap nav-inner">
     <a href="#top" class="logo">
-      <img class="logo-img" src="photos/365-logo.png" alt="365 Landscaping logo" width="44" height="44">
+      <span class="logo-swap">
+        <img class="logo-img logo-light" src="photos/365-logo-white.png" alt="365 Landscaping" width="407" height="240">
+        <img class="logo-img logo-dark" src="photos/365-logo-green.png" alt="" aria-hidden="true" width="407" height="240">
+      </span>
       <span><small>Pittsburgh, PA</small></span>
     </a>
     <nav class="primary">
@@ -469,7 +482,7 @@
     <div class="stat"><b>365</b><span>Days serviced / year</span></div>
     <div class="stat"><b>5</b><span>Service lines</span></div>
     <div class="stat"><b>4</b><span>Seasons covered</span></div>
-    <div class="stat"><b>100%</b><span>Owner-founded &amp; local</span></div>
+    <div class="stat"><b>100%</b><span>Owner-Managed &amp; local</span></div>
   </div>
 </div>
 
@@ -669,12 +682,11 @@
       </div>
     </div>
 
-    <div class="work-strip reveal">
-      <div class="work-thumb"><img src="photos/ba/standalone-paver-edging.jpg" alt="New paver edging and patio base under construction" loading="lazy"><span>Paver edging in progress</span></div>
-      <div class="work-thumb"><img src="photos/ba/standalone-mowed-yard.jpg" alt="Freshly mowed backyard with trimmed hedge line" loading="lazy"><span>Weekly mowing</span></div>
-      <div class="work-thumb"><img src="photos/review-retaining-wall-1.jpg" alt="New retaining wall and gate installation" loading="lazy"><span>Retaining wall — Google review</span></div>
-      <div class="work-thumb"><img src="photos/review-bed-cleanup.jpg" alt="Trimmed shrubs and cleared garden bed" loading="lazy"><span>Bed cleanup — Google review</span></div>
-    </div>
+<div class="work-strip reveal">
+      <div class="work-thumb"><img src="photos/hardscaping_1.jpg" alt="Gray block retaining wall with capstone beside concrete steps and a wooden gate" loading="lazy" width="800" height="600"><span>Block retaining wall &amp; steps</span></div>
+      <div class="work-thumb"><img src="photos/mulch_1.jpg" alt="Red mulch bed with flagstone stepping stones and a rounded river rock border" loading="lazy" width="800" height="600"><span>Stepping stones &amp; mulch beds</span></div>
+      <div class="work-thumb"><img src="photos/Weekly_Mowing.jpg" alt="Large open lawn with fresh mower stripes running toward a tree line" loading="lazy" width="800" height="600"><span>Weekly mowing, large property</span></div>
+      <div class="work-thumb"><img src="photos/hardscaping_4.jpg" alt="Curved brown block retaining wall terracing a wooded backyard slope" loading="lazy" width="800" height="600"><span>Terraced wall, wooded lot</span></div>    </div>
   </div>
 </section>
 
@@ -703,7 +715,7 @@
         </div>
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
-          <p class="rev-quote">"365 landscaping — Jake and his team excavated an old retaining wall that fell over this past winter. Reasonable price."</p>
+          <p class="rev-quote">"365 Landscaping, Jake and his team, excavated an old retaining wall that fell over this past winter. They removed all the debris, excavated the area, and built the new retaining wall with Versa-Lok blocks. Each member of the team was very professional, timely, and efficient. Would recommend to anyone who needs any outdoor services!"</p>
           <div class="rev-name">John Hamar <span>Google review</span></div>
         </div>
         <div class="rev-card">
@@ -718,7 +730,7 @@
         </div>
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
-          <p class="rev-quote">"We've been using 365 Landscaping for almost 2 years now. The staff and owner are kind and hardworking."</p>
+          <p class="rev-quote">"We've been using 365 Landscaping for almost 2 years now. The staff and owner are kind and hardworking, the work is exceptional, and the attention to detail is phenomenal. 10/10 would recommend."</p>
           <div class="rev-name">Robin Sheffey <span>Google review</span></div>
         </div>
         <div class="rev-card">
@@ -733,8 +745,8 @@
         </div>
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
-          <p class="rev-quote">"I can't say enough good things about my experience with Jake and his excellent crew. They arrived on time and kept me involved as they proceeded with their work. He completed all agreed upon work — my house now has curb appeal."</p>
-          <div class="rev-name">kay m <span>Google review</span></div>
+          <p class="rev-quote">"You don’t need to hire one of the big companies that advertises on Radio or TV. All you need is 365 Landscaping. We are so pleased with how they trimmed our tree, which had already been butchered by the utility company."</p>
+          <div class="rev-name">Tara Reis <span>Google review</span></div>
         </div>
         <div class="rev-card">
           <div class="rev-stars">★★★★★</div>
@@ -854,7 +866,7 @@
     <div class="foot-top">
       <div>
         <div class="foot-logo">
-          <img src="photos/365-logo.png" alt="365 Landscaping logo" style="width:44px;height:44px;object-fit:contain;filter:brightness(0) invert(1);">
+          <img src="photos/365-logo-white.png" alt="365 Landscaping logo" style="width:68px;height:40px;object-fit:contain;">
         </div>
         <p style="margin-top:14px;font-size:13px;max-width:34ch;line-height:1.6;">Full-service outdoor care for homes and businesses across the Pittsburgh suburbs — 365 days a year.</p>
       </div>
