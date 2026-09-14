@@ -266,11 +266,18 @@ html{scroll-behavior:smooth;scroll-padding-top:96px;}  body{
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 6px 18px rgba(0,0,0,0.3);cursor:ew-resize;
   }
+  .ba-static{
+    position:relative;width:100%;
+    border-radius:18px;overflow:hidden;
+    background:var(--stone);
+    box-shadow:0 24px 50px -20px rgba(15,61,44,0.35);
+  }
+  .ba-static img{width:100%;height:auto;max-height:860px;object-fit:contain;}
   .ba-caption{text-align:center;margin-top:20px;}
   .ba-caption h3{font-size:20px;margin-bottom:6px;}
   .ba-caption p{font-size:14.5px;color:var(--ink-soft);max-width:44ch;margin:0 auto;}
 
-  .work-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px;}
+  .work-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px;}
   .work-thumb{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;}
   .work-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
   .work-thumb:hover img{transform:scale(1.07);}
@@ -462,6 +469,7 @@ html{scroll-behavior:smooth;scroll-padding-top:96px;}  body{
     .ba-caption h3{font-size:18px;}
     .ba-caption p{font-size:13.5px;}
     .ba-tag{font-size:10px;padding:4px 10px;top:10px;}
+    .ba-static img{max-height:none;}
     .ba-handle-circle{width:38px;height:38px;}
 
     /* ---- work strip: one column, bigger images ---- */
@@ -621,7 +629,7 @@ html{scroll-behavior:smooth;scroll-padding-top:96px;}  body{
     <div class="section-head reveal">
       <div class="eyebrow">Recent jobs</div>
       <h2>Real properties. Real crew. Real results.</h2>
-      <p>Drag the slider to see the actual before-and-after on nine recent Pittsburgh-area properties.</p>
+      <p>Drag the slider to see the actual before-and-after on fifteen recent Pittsburgh-area properties.</p>
     </div>
 
     <div class="ba-carousel reveal">
@@ -726,6 +734,69 @@ html{scroll-behavior:smooth;scroll-padding-top:96px;}  body{
           <div class="ba-caption"><h3>Driveway Overgrowth Clearing</h3><p>Cleared heavy brush and weeds off a driveway edge and reshaped the hedge line.</p></div>
         </div>
 
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="9">
+            <img class="ba-img-before" src="photos/ba/10-mulch-hedge-weed-before.png" alt="Weeds and overgrown brush crowding a lamp post and the front of a split-level home" width="976" height="1312" loading="lazy" decoding="async">
+            <img class="ba-img-after" src="photos/ba/10-mulch-hedge-weed-after.png" alt="Clean mulch bed around a lamp post with trimmed shrubs and a cut-in bed line" width="976" height="1312" loading="lazy" decoding="async">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Mulch Bed Restoration, Hedge Trimming, and Weed Treatment</h3><p>Overgrown beds cut back, treated for weeds, and finished with fresh mulch and a clean edge along the front of the house.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="10">
+            <img class="ba-img-before" src="photos/ba/11-plant-design-install-before.png" alt="Overgrown front bed of weeds and leggy growth around a Japanese maple beside a driveway" width="958" height="1280" loading="lazy" decoding="async">
+            <img class="ba-img-after" src="photos/ba/11-plant-design-install-after.png" alt="Freshly planted mulch bed with a Japanese maple and stone accents beside a driveway" width="955" height="1280" loading="lazy" decoding="async">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Plant Design and Install</h3><p>New plantings laid out and installed in a re-cut bed, then finished with dark mulch and stone accents around the Japanese maple.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="11">
+            <img class="ba-img-before" src="photos/ba/12-mulch-bed-redo-before.png" alt="Bare hillside bed of dirt and scattered growth in front of a brick home" width="1280" height="960" loading="lazy" decoding="async">
+            <img class="ba-img-after" src="photos/ba/12-mulch-bed-redo-after.png" alt="Red mulch bed with a stone border and flagstone stepping stones in front of a brick home" width="953" height="1280" loading="lazy" decoding="async">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Mulch Bed Redo</h3><p>A tired front bed stripped out, re-edged, and rebuilt with red mulch, a stone border, and flagstone stepping stones.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="12">
+            <img class="ba-img-before" src="photos/ba/13-wall-drain-regrade-before.png" alt="Sloped backyard with overgrown edges draining toward a brick patio" width="958" height="1280" loading="lazy" decoding="async">
+            <img class="ba-img-after" src="photos/ba/13-wall-drain-regrade-after.png" alt="Regraded backyard with a new paver drainage channel running away from the patio" width="955" height="1280" loading="lazy" decoding="async">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Wall, Drain, and Regrading</h3><p>The backyard regraded with a new drainage channel that carries water away from the patio and foundation instead of into them.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-compare" data-index="13">
+            <img class="ba-img-before" src="photos/ba/14-backyard-landscaping-before.png" alt="Weedy, overgrown backyard corner around a flag pole and a lone shrub" width="734" height="1314" loading="lazy" decoding="async">
+            <img class="ba-img-after" src="photos/ba/14-backyard-landscaping-after.png" alt="Defined mulch bed with timber edging, stone accents and new plantings around a flag pole" width="974" height="1312" loading="lazy" decoding="async">
+            <span class="ba-tag ba-tag-before">Before</span>
+            <span class="ba-tag ba-tag-after">After</span>
+            <div class="ba-handle"><div class="ba-handle-line"></div><div class="ba-handle-circle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div></div>
+          </div>
+          <div class="ba-caption"><h3>Backyard Landscaping</h3><p>A weedy back corner turned into a defined bed with timber edging, stone accents and new plantings around the flag pole.</p></div>
+        </div>
+
+        <div class="ba-slide">
+          <div class="ba-static">
+            <img src="photos/ba/15-mulch-bed-restoration-assortment.jpg" alt="Four before-and-after pairs showing mulch beds cleaned out, re-edged and topped with fresh dark mulch" width="754" height="1144" loading="lazy" decoding="async">
+          </div>
+          <div class="ba-caption"><h3>Mulch Bed Restoration</h3><p>Four beds on the same property cleaned out, re-edged, and topped with fresh mulch in a single visit.</p></div>
+        </div>
+
+
       </div>
 
       <div class="rev-controls" style="margin-top:20px;">
@@ -743,7 +814,10 @@ html{scroll-behavior:smooth;scroll-padding-top:96px;}  body{
       <div class="work-thumb"><img src="photos/hardscaping_1.jpg" alt="Gray block retaining wall with capstone beside concrete steps and a wooden gate" loading="lazy" width="800" height="600"><span>Wall and Drain</span></div>
       <div class="work-thumb"><img src="photos/mulch_1.jpg" alt="Red mulch bed with flagstone stepping stones and a rounded river rock border" loading="lazy" width="800" height="600"><span>Mulch Bed Redo</span></div>
       <div class="work-thumb"><img src="photos/Weekly_Mowing.jpg" alt="Large open lawn with fresh mower stripes running toward a tree line" loading="lazy" width="800" height="600"><span>Weekly Mowing</span></div>
-      <div class="work-thumb"><img src="photos/hardscaping_4.jpg" alt="Curved brown block retaining wall terracing a wooded backyard slope" loading="lazy" width="800" height="600"><span>Wall, Drain, and Regrading</span></div>    </div>
+      <div class="work-thumb"><img src="photos/hardscaping_4.jpg" alt="Curved brown block retaining wall terracing a wooded backyard slope" loading="lazy" width="800" height="600"><span>Wall, Drain, and Regrading</span></div>
+      <div class="work-thumb"><img src="photos/fence_and_sod.png" alt="New tan privacy fence and fresh sod lawn around a backyard shed and patio" loading="lazy" width="800" height="600"><span>Fence and Sod</span></div>
+      <div class="work-thumb"><img src="photos/sod.png" alt="Fresh sod lawn filling a fenced backyard beside a mature tree" loading="lazy" width="800" height="600"><span>Sod Install</span></div>
+    </div>
   </div>
 </section>
 
